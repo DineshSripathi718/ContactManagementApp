@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Contact</title>
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/AddContact.css">
+</head>
+<body>
+    <header>
+        <div class="title">Contact Management System</div>
+        <nav class="navbar-container">
+            <div class="navbar-item">
+                <a href="./index.html" class="nav-link">home</a>
+            </div>
+            <div class="navbar-item">
+                <a href="./login.html" class="nav-link">login</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Add New Contact</h2>
+            <form id="addContactForm">
+                <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="firstName" placeholder="Enter first name" required>
+                </div>
+                <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lastName" placeholder="Enter last name" required>
+                </div>
+                <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                <label>Phone</label>
+                <input type="text" id="phone" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                <label>Company</label>
+                <input type="text" id="company" placeholder="Enter company name">
+                </div>
+                <div class="form-group">
+                <label>Tags (comma-separated)</label>
+                <input type="text" id="tags" placeholder="friends, client, family">
+                </div>
+                <div class="form-group">
+                <label>Photo URL (optional)</label>
+                <input type="text" id="photo" placeholder="https://example.com/photo.jpg">
+                </div>
+                <button type="submit" class="btn">Add Contact</button>
+            </form>
+
+            <div id="message"></div>
+        </section>
+        <div id="pop-up" aria-hidden="true" role="dialog">
+            <div id="pop-message">This is a placeholder message</div>
+            <div id="pop-btn-container">
+                <a class="pop-btn" id="pop-up-home" href="./index.html">home</a>
+                <button class="pop-btn" id="pop-up-close">close</button>
+            </div>
+        </div>
+
+  </main>
+</body>
+<script type="module" src="./scripts/AddContact.js"></script>
+</html>

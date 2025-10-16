@@ -1,0 +1,97 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.form-section {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  z-index: 100;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2563eb;
+}
+
+#message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+
+#pop-up{
+  display: none;
+  flex-direction: column;
+  gap : 10px;
+  align-items: center;
+  background-color: white;
+  padding : 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px black;
+  position: fixed;
+  top : 50%;
+  left : 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.pop-btn{
+  padding : 5px 10px;
+  text-decoration: none;
+  background-color: red;
+  color : white;
+  border-radius: 10px;
+  border : 1px solid transparent;
+  cursor: pointer;
+}
+
+#pop-up.active {
+  display: flex;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}

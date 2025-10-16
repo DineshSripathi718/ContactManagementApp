@@ -1,0 +1,56 @@
+/* ===== HEADER STYLING ===== */
+header {
+  background: linear-gradient(90deg, #f9fbfd, #eef4fa);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Roboto, "Open Sans", sans-serif;
+  z-index: 1000;
+}
+
+/* ===== TITLE ===== */
+header .title {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #1e3a8a; /* Deep business blue */
+  letter-spacing: 0.5px;
+}
+
+/* ===== NAVBAR CONTAINER ===== */
+header .navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== NAV LINKS ===== */
+header .nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #334155; /* Neutral dark gray */
+  transition: all 0.3s ease-in-out;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+header .nav-link:hover {
+  color: #ffffff;
+  background-color: #10b981; /* Playful green accent */
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ===== ACTIVE LINK (optional) ===== */
+header .nav-link.active {
+  color: #ffffff;
+  background-color: #f97316; /* Vibrant orange for active link */
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+}
