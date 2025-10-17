@@ -1,26 +1,24 @@
 import { getContactById, updateExistingContact, deleteContact } from "./data.js";
 
 
+import { GET_CONTACT_BY_ID, UPDATE_CONTACT } from "./DatabaseOPs/DatabaseOps.js";
+
 
 const mainSection = document.querySelector('main');
 
 
 
-const viewContactCard = () => {
+const viewContactCard = async () => {
+    console.log("view contact card called")
     const searchId = Number(window.location.search.substring(4));
     
-    const contact = getContactById(searchId)[0]
+    const contact = await GET_CONTACT_BY_ID(searchId)
 
-    console.log(contact)
-
-    const tagValue = contact.tags.join(",")
-
-    console.log(tagValue)
 
     const htmlStructure = 
     `<div class="view-contact-container">
         <div class="image-container">
-            <img src=${contact.photo} alt="Contact Image">
+            <img src=${contact.photoUrl} alt="Contact Image">
         </div>
         <div class="contact-name">${contact.firstName+" "+contact.lastName}</div>
         <div class="contact-email">
@@ -32,21 +30,21 @@ const viewContactCard = () => {
 
         <div class="tags-container">
             ${
-                contact.tags.map(tag => `<div class="tag">${tag}</div>`)
+                contact.tags.split(",").map(tag => `<div class="tag">${tag}</div>`)
             }
         </div>
 
         <div class="button-container">
             <button class="edit-btn">Edit</button>
             <button class="delete-btn">Delete</button>
-            <button class="back-btn" onclick="window.history.back()">Back</button>
+            <button class="back-btn" onclick="window.location.href='./index.html'">Back</button>
         </div>
     </div>`
 
     const formStructure =  
     `<div class="view-contact-container">
         <div class="image-container">
-            <img src=${contact.photo} alt="Contact Image">
+            <img src=${contact.photoUrl} alt="Contact Image">
         </div>
 
         <div class="contact-name">
@@ -72,7 +70,7 @@ const viewContactCard = () => {
 
         <div class="input-group tags-container">
             <label for="tags">Tags</label>
-            <input type="text" id="tags" value=${tagValue} />
+            <input type="text" id="tags" value='${contact.tags}' />
         </div>
 
         <div class="button-container">
@@ -109,21 +107,25 @@ const viewContactCard = () => {
 viewContactCard();
 
 
-const saveContact = (contact) => {
+const saveContact = async (contact) => {
+    console.log(contact)
     const firstName = document.getElementById('firstName').value.trim()
     const lastName = document.getElementById('lastName').value.trim()
     const email = document.getElementById('email').value.trim()
     const phone = document.getElementById('phone').value.trim()
-    const tags = document.getElementById('tags').value.split(",")
+    const tags = document.getElementById('tags').value.trim()
 
-    const id = contact.id;
-    const photo = contact.photo
+    const id = contact.userId;
+    const photo = contact.photoUrl
 
-    const data = {id,firstName, lastName, email, phone, tags, photo}
+    const data = {userId : id,firstName, lastName, email, phone, tags, photoUrl : photo}
 
+    console.log(data)
     contact = data;
 
-    if(updateExistingContact(data))
+    const response = await UPDATE_CONTACT(data)
+
+    if(response)
         viewContactCard()
 }
 
