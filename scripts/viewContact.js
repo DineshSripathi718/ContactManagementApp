@@ -30,7 +30,7 @@ const viewContactCard = async () => {
 
         <div class="tags-container">
             ${
-                contact.tags.split(",").map(tag => `<div class="tag">${tag}</div>`)
+                contact.tags.split(",").map(tag => `<div class="tag">${tag}</div>`).join("")
             }
         </div>
 
