@@ -1,3 +1,5 @@
+const URL = 'https://contactmanagementapp-backend.onrender.com/'
+
 export const ADD_CONTACT = async (data) => {
     console.log(data);
 
@@ -10,7 +12,7 @@ export const ADD_CONTACT = async (data) => {
     }
 
     try{
-        const response = await fetch('http://localhost:8080/submit', payload)
+        const response = await fetch(`${URL}submit`, payload)
         if(response.ok){
             console.log("data submitted")
             return true
@@ -26,14 +28,14 @@ export const ADD_CONTACT = async (data) => {
 
 
 export const GET_ALL_CONTACTS = async () => {
-    const response = await fetch("http://localhost:8080/contact/all");
+    const response = await fetch(`${URL}contact/all`);
     const data = await response.json();
     return data
 }
 
 export const GET_CONTACT_BY_ID = async (id) => {
     try{
-        const response = await fetch(`http://localhost:8080/contact/${id}`)
+        const response = await fetch(`${URL}contact/${id}`)
         if(response.ok){
             const data = await response.json()
 
@@ -58,7 +60,7 @@ export const UPDATE_CONTACT = async (data) => {
     }
 
     try{
-        const response = await fetch('http://localhost:8080/contact/update', payload)
+        const response = await fetch(`${URL}contact/update`, payload)
         if(response.ok){
             const data = await response.text();
             console.log(data)
