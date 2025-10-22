@@ -1,7 +1,7 @@
 import { getContactById, updateExistingContact, deleteContact } from "./data.js";
 
 
-import { GET_CONTACT_BY_ID, UPDATE_CONTACT } from "./DatabaseOPs/DatabaseOps.js";
+import { GET_CONTACT_BY_ID, UPDATE_CONTACT, DELETE_CONTACT } from "./DatabaseOPs/DatabaseOps.js";
 
 
 const mainSection = document.querySelector('main');
@@ -96,8 +96,8 @@ const viewContactCard = async () => {
     })
 
     const deleteButton = document.querySelector('.delete-btn');
-    deleteButton.addEventListener('click', () => {
-        if(deleteContact(searchId))
+    deleteButton.addEventListener('click', async () => {
+        if(await DELETE_CONTACT(searchId))
             window.location.href = "./index.html"
         else
             console.error("unable to delete")

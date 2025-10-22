@@ -1,13 +1,16 @@
-import { fetchAllContacts, filterContactsFromData } from "./crudOps.js";
 import showContacts from "./ContactsForm.js";
 
 import { GET_ALL_CONTACTS } from "./DatabaseOPs/DatabaseOps.js";
+
+let contactsData = null
 
 async function fetchContacts(){
     // const data = await fetchAllContacts();
     const data = await GET_ALL_CONTACTS();
 
-    showContacts(data)
+    contactsData = data
+
+    showContacts(contactsData)
     
     const ctaButtons = document.querySelectorAll('.cta');
 
@@ -49,3 +52,10 @@ searchTextBox.addEventListener('input', (e) => {
         fetchContacts();
     }
 });
+
+const filterContactsFromData = (searchText) => {
+const filteredContacts = contactsData.filter(contact => contact.firstName.toLowerCase().includes(searchText) || contact.lastName.toLowerCase().includes(searchText))
+
+
+return filteredContacts
+}

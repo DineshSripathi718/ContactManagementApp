@@ -1,4 +1,5 @@
 const URL = 'https://contactmanagementapp-backend.onrender.com/'
+// const URL = 'http://localhost:8080/'
 
 export const ADD_CONTACT = async (data) => {
     console.log(data);
@@ -73,4 +74,20 @@ export const UPDATE_CONTACT = async (data) => {
         console.log("unexpected error")
         console.error(error)
     }
+}
+
+export const DELETE_CONTACT = async (id) => {
+    const payload = {
+        headers : {
+            'Content-Type': 'application/json'
+        },
+        method: 'DELETE'
+    }
+    const response = await fetch(`${URL}contact/delete/${id}`, payload)
+
+    if(response.ok){
+        return true
+    }
+
+    return false
 }
