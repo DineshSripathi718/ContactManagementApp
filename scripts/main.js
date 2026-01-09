@@ -24,6 +24,10 @@ async function fetchContacts(){
 
 fetchContacts()
 
+document.addEventListener('DOMContentLoaded', () => {
+    fetchContacts();
+})
+
 const AddNewContactButton = document.getElementById('addNewContact');
 
 AddNewContactButton.addEventListener('click', () => {
